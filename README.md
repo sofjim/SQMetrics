@@ -9,6 +9,7 @@ INTRODUCTION
 
 
 USAGE
+
     - At first, you must choose the directory that contains both, the source code (*.java files) and the binary code (*.class files). 
     - Then you must choose which metrics to be counted. Feel free to choose any of the metrics or the whole set of them. A tool tip is shawn when you hover the mouse pointer over each metric, with its description.
     - After that, a progress bar will be displayed and then a table with the results appears on the screen. You have the option to export them into a .csv file. In this case, you have to choose where to save the file and the name of the file. If you don’t add the .csv extension or if you add a wrong one, the program will correct it. The default separator that has been set is the semicolon (;) such as in Microsoft Excell. If you use another spreadsheet programm, you must import the data manually.
@@ -97,4 +98,3 @@ HISTORY
 
     - v 0.7: 
 	Total new interface. More flexible, more stable. Faster algorithms up to 60%. The problem with non utf-8 characters has been fixed.
-
