@@ -1,0 +1,68 @@
+***************
+SQMetrics v 0.7
+***************
+
+
+INTRODUCTION
+
+    - This is a simple application to measure the most common software quality metrics. It has a simple graphical interface, so the user should not have much experience to use it. 
+
+
+USAGE
+    - At first, you must choose the directory that contains both, the source code (*.java files) and the binary code (*.class files). 
+    - Then you must choose which metrics to be counted. Feel free to choose any of the metrics or the whole set of them. A tool tip is shown when you hover the mouse pointer over each metric, with its description.
+    - After that, a progress bar will be displayed and then a table with the results appears on the screen. You have the option to export them into a .csv file. In this case, you have to choose where to save the file and the name of the file. If you don’t add the .csv extension or if you add a wrong one, the program will correct it. The default separator that has been set is the semicolon (;) such as in Microsoft Excell. If you use another spreadsheet program, you must import the data manually.
+    - You may leave this window open as long as you work with the application. It will be closed automatically if you exit the program (works with the "Exit" button, but not work with the "Finish" button).
+
+
+LIMITATIONS
+
+    - The directory you choose, must contains both, java and class files. If they are at different folders, choose their common parent directory.
+    - You have to compile your program first, so the *.class files must exist and should have the same names as the *.java files do. If a ".java" file is missing, the program will run and you 'll get the results for the other classes, but if a ".class" file is missing or has a different name than the corresponding ".java" file, the program won't work and will crash.
+    - The declarations of the methods into the code, must be in 1 line, otherwise the results of some metrics will be slightly different.
+
+
+REQUIREMENTS
+
+    - This program will run on Microsoft Windows, Linux and Mac OS X. It has been tested on Microsoft Windows 7 and 10, on Ubuntu Linux and on Mac OS X High Sierra. It should run on the other versions of these platforms too, but has not been tested.
+    - JRE 1.8 or JDK 1.8 (or newer) is required to be installed on your system, so this program is able to run.
+
+
+KNOWN BUGS
+
+    - On some Windows systems the runnable ".jar" file won't run. In this case you have to execute the "RunMe_on_Windows" script and the program will run perfectly.
+    - If you encounter the same problem on Linux, run the "Run_Me_On_Linux.bat" file.
+    - Please, report any new bug at std131050@ac.eap.gr or at sofjim65@gmail.com.
+
+
+HISTORY
+
+    v 0.1: 
+	- All 6 Cidamber & Kemerer metrics are supported, plus 3 size metrics as physical and logical lines of code and lines of comments. 
+	- The results are displayed in the terminal.
+
+    v 0.2: 
+	- A graphical environment and the ability to export data to a.csv file have been added.
+
+    v 0.3: 
+	- All 11 QMOOD metrics have been added.
+
+    v 0.4: 
+	- Calculation for the 6 quality characteristics, that the QMOOD model suggests, has been added. 
+	- A bug, that led to wrong calculation of the NOM metric and, by extension, to other metrics such as LCOM1, RFC, CAM etc, has been fixed. 
+
+    v 0.5: 
+	- The ability to choose the separate character for the exported csv file, between coma (,) and semicolon (;), has been added. 
+	- Tooltips' delay time increased to infinity.
+
+    v 0.6: 
+	- Improved and faster algorithm for LCOM1, LCOM2 and LCOM3 metric (now only instance fields are counted). 
+	- Names of classes and metrics, now appear on the progress bar.
+
+    v 0.7: 
+	- Total new interface. More flexible, more stable. 
+	- Faster algorithms up to 60%. 
+	- The problem with non utf-8 characters has been fixed.
+	- The ability to compare different versions of the same application or different applications, as it has been introduced by B & D (Bansiya, J., & Davis, C. G., 2002).
+	- A project report has been added to inform the user for the classes, methods and fields of the whole project, including the cyclomatic complexity of each method and the modifications of the methods and the fields. This report is been saved to a text file into the project directory.
+	- An "Options" button has been added and the user has the ability to choose some parameters for some metrics, that are not clearly defined.

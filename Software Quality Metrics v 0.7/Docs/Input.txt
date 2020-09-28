@@ -1,0 +1,60 @@
+***************
+SQMetrics v 0.7
+***************
+
+-------------------
+DISCRIPTION
+-------------------
+    - The application supports 3 size metrics, the 6 C & K metrics and the 11 QMOOD metrics.
+
+    --------------------
+    SIZE METRICS
+    --------------------
+        - Physical Line of Code (PLOC): It counts the "CR" or "ENTER" characters. All the lines are counted. The comment and the blank lines are included.
+        - Logical Lines of Code (LLOC): All lines that contain code are counted even if it is only 1 character. If a line contains both code and comments it will be counted.
+        - Lines of Comments (LC): Only the lines that contain comments are counted. If a line contains both code and comments it will be counted.
+
+    -------------------------
+    C && K METRICS
+    -------------------------
+        - Number of Children (NOC): The NOC of a class is the number of the classes that inherit from this class.
+        - Depth of Inheritance Tree (DIT): It calculates the depth of the inheritance tree of a class, into the project. If the class inherits from an external class out of the project, its DIT is "1".
+        - Coupling Between Objects (CBO): Two classes are coupled when one of them uses methods, non static fields or objects of the other class or if they are parent – child (The inheritance is available via a checkbox into the "Options").
+        - Weight Method per Class (WMC): It counts the sum of the McCabe's cyclomatic complexity of all the methods of the class. Constructors are excluded.
+        - Lack of Cohesion of Methods (LCOM): There are 3 types. LCOM1, LCOM2 and LCOM3. The LCOM1 is the oldest and is an integer. It adds "1" for every pair of methods that use at least 1 common instance field and abstracts "1" for every pair which doesn’t. If it is below "0", then it is "0". The LCOM2 is calculated by the following formula: LCOM2 = 1 – sum(nA)/(m * a), where m = number of methods and a = number of fields, nA = number of methods that access the field "A". LCOM3 is a little bit different. LCOM3 = (m - sum(nA)/a)/(m - 1). LCOM2 takes values between "0" and "1" and LCOM3 between "0" and "2". For all 3 metrics, the closer to "0" the better. Getters and setters such as constructors are excluded.
+        - Response For a Class (RFC): It is the number of methods that could be called to answer a message from an object of another class. It is calculated by the formula: RFC = M + R, where M is the number of the methods of the class and R is the number of methods of other classes, which are called from a method of this class. There is an option to calculate the methods of the other classes, which call methods of the current class. Constructors are counted.
+
+    --------------------------
+    QMOOD METRICS
+    --------------------------
+        - Design Size in Classes (DSC): It is the number of the classes of the project.
+        - Number Of Hierarchies (NOH): It is the number of the subtrees of the project, under the System.Object class, which means the number of the classes that have at least 1 child and DIT = 1.
+        - Average Number of Ancestors (ANA): It is the average of the classes from which a class inherits. It is given by the formula ANA = DIT / DSC.
+        - Data Access Metric (DAM): It is the division between the number of "private" fields by the total number of fields. The closer to "1" the better. There is an option to divide the sum of private and protected fields by the total number of fields.
+        - Direct Class Coupling (DCC): It is the number of the other classes that are directly coupled with this class. A class is directly coupled with another class, when it is a parent or a child of the other class, or it has a field with the type of the other class, or its methods return a value or have a parameter with a type of the other class.
+        - Cohesion Among Methods (CAM): It is calculated by the formula CAM = (sum Mi) / (n * (T + 1)). "Mi" is the number of the distinct parameters of the method "i", "sum Mi" is the sum for all methods of the class, "n" is the number of the methods of the class and "T" is the number distinct parameter type of all the methods of the class. In "Mi", the type of the class itself is included, but in the "T", it is not included.
+        - Measure of Aggregation (MOA): This method returns the number of variables which are declared by the user. This means the variables, that their type is another class of the project. It counts the classes fields and there are options to count the constructors' variables or the methods' variables and return types.
+        - Measure of Functional Abstraction (MFA): It is the "Measure of Functional Abstraction" (MFA) metric, which is the division between the inherited methods, by all the methods of the class (inherited and declared). Overriden such as hidden methods are excluded.
+        - Number of Polymorphic Methods (NOP): It is the number of the methods of a class, which may have polymorphic behavior.
+        - Class Interface Size (CIS): It is the number of the "public" methods of the class.
+        - Number of Methods (NOM): It is the number of the methods that are declared in a class, which means the number of the public, protected, default (package) access, and private methods of the class. Constructors are excluded.
+
+    ------------------------------------------------------------
+    QMOOD QUALITY CHARACTERISTICS
+    ------------------------------------------------------------
+        Each of the following characteristics is been calculated, only if all of its parameters have been checked for calculation.
+
+        - REUSABILITY = (- 0.25) * DCC + 0.25 * CAM + 0.5 * CIS + 0.5 * DSC
+        - FLEXIBILITY = 0.25 * DAM - 0.25 * DCC + 0.5 * MOA + 0.5 * NOP
+        - UNDERSTANDABILITY = (- 0.33) * ANA + 0.33 * DAM - 0.33 * DCC + 0.33 * CAM - 0.33 * NOP - 0.33 * NOM - 0.33 * DSC
+        - FUNCTIONALITY = 0.12 * CAM + 0.22 * NOP + 0.22 * CIS + 0.22 * DSC + 0.22 * NOH
+        - EXTENDIBILITY = 0.5 * ANA - 0.5 * DCC + 0.5 * MFA * 0.5 * NOP
+        - EFFECTIVENESS = 0.2 * ANA + 0.2 * DAM + 0.2 * MOA + 0.2 * MFA + 0.2 * NOP
+
+-------------
+OPTIONS
+-------------
+        - RFC: According to C&K, there is no need to calculate the other classes' methods, which call the current class' methods, but for others they must be counted.
+        - CBO: According to C&K, the inheritance relations must not be calculated for coupling. Others believe that they must, so there is an option for the user to choose.
+        - MOA: B&D do not specify which variables to consider for the calculation of the MOA metric. Three options have been added. With the first one checked, the constructors' and methods' parameters, will be included. With the second, the return types of the methods, will be included. With the third option checked, the parameters that are defined into the method's bodies, will be included. The last one is very slow, because there is no other way to find the parameters that are declared inside the body of the methods, beside parsing.
+        - DAM: B&D, for the DAM metric, use the exact phrase: "the number of the private (protected) attributes". Of course, these are two different meanings in OO Programming. Therefore, the user will have to decide, whether the protected fields will be counted or not.

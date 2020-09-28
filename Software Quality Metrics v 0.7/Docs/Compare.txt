@@ -1,0 +1,24 @@
+***************
+SQMetrics v 0.7
+***************
+
+
+COMPARE
+
+    - There are two methods to compare software, as they have been introduced by B & D (Bansiya, J., & Davis, C. G., 2002). The first one is for comparing 2 or more versions of the same software application and the second is for comparing 2 or more different software applications.
+    - For both methods, a .csv file for each application, that has been made by the current version of SQMetrics (this application), is required.
+    - After choosing files, a dialog appears and the user must choose which comparing method will be executed.
+    - No matters which separate character is been used for each .csv file. SQMetrics detects it automaticaly.
+
+
+COMPARE DIFFERENT VERSIONS OF THE SAME SOFTWARE APPLICATION
+
+    - The .csv file for the oldest version, must be choosen first. It is recomended to choose all of the .csv files, in asceding order.
+    - The values of all .csv files, are normalized to the values of the first version (or the oldest one, if first does not exist) and thus, all the versions are compared to the first one.
+    - After that, the results are displayed on the screen.
+
+
+COMPARE DIFFERENT SOFTWARE APPLICATIONS
+
+    - One .csv file for each software application (the order no matters), must be choosen.
+    - After that, the results are displayed on the screen.
